@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/main/main"
+    "pages/main/main",
+    "pages/huahua/huahua"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,6 +27,12 @@
         "iconPath": "images/menuicon/user.png",
         "pagePath": "pages/main/main",
         "text": "刷一刷"
+      },
+      {
+        "selectedIconPath": "images/menuicon/user1.png",
+        "iconPath": "images/menuicon/user.png",
+        "pagePath": "pages/huahua/huahua",
+        "text": "刷一刷00"
       }
     ]
   },

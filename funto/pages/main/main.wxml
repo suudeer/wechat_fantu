@@ -6,8 +6,15 @@
   <image class="img1" src="../../images/menuicon/xin.png"></image>
   <image class="img2" src="../../images/menuicon/cai1.png"></image>
   <image class="img3" src="../../images/menuicon/go.png"></image>
-  <image class="img4" src="../../images/menuicon/discuss.png"></image>
+  <image class="img4" src="../../images/menuicon/discuss.png" catchtap='clickPup'></image>
 <text class="text2">#这是一句话</text>
 <text class="text3">#这是一段话</text>
  </view>
+ <!-- 底部弹窗动画的内容 -->
+<view class='pupContent {{click? "showContent": "hideContent"}} {{option? "open": "close"}}' hover-stop-propagation='true'>
+  <text class="view2">关闭</text>
+</view>
+<!-- 固定的背景 -->
+<view class='pupContentBG {{click?"showBG":"hideBG"}} {{option?"openBG":"closeBG"}}' catchtap='clickPup'>
+</view>
 </view>
