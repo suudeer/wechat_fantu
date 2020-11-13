@@ -2,14 +2,34 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/huahua/huahua"
+    "pages/main/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#3481EB",
+    "navigationBarTitleText": "饭图",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#f4ea2a",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/menuicon/index1.png",
+        "iconPath": "images/menuicon/index.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/menuicon/user1.png",
+        "iconPath": "images/menuicon/user.png",
+        "pagePath": "pages/main/main",
+        "text": "刷一刷"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
+  
 }

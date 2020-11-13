@@ -1,0 +1,13 @@
+<view class="video_box">
+ <view bindtouchend="touchEnd" id="myVideo{{index}}" animation="{{animation}}" bindtouchstart="touchStart" bindtouchmove="touchMove" class="video_list" wx:for="{{video_list}}" data-index="{{index}}" wx:key="index" >
+  
+  <image class="image1" src="{{item.img_src}}" ></image>
+  <text class="text1">{{item.img_name}}</text>
+  <image class="img1" src="../../images/menuicon/xin.png"></image>
+  <image class="img2" src="../../images/menuicon/cai1.png"></image>
+  <image class="img3" src="../../images/menuicon/go.png"></image>
+  <image class="img4" src="../../images/menuicon/discuss.png"></image>
+<text class="text2">#这是一句话</text>
+<text class="text3">#这是一段话</text>
+ </view>
+</view>
