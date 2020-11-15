@@ -30,9 +30,9 @@
       },
       {
         "selectedIconPath": "images/menuicon/user1.png",
-        "iconPath": "images/menuicon/user.png",
+        "iconPath": "images/menuicon/ct.png",
         "pagePath": "pages/huahua/huahua",
-        "text": "刷一刷00"
+        "text": "餐厅"
       }
     ]
   },
