@@ -1,5 +1,5 @@
 <view> 
-<button bindtap='showTalks'>查看评论</button> 
+<button bindtap='showTalks'>这里是餐厅</button> 
 </view>
  
  

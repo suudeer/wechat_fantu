@@ -34,7 +34,7 @@ page {
   height: 900rpx; 
   width: 100%; 
   bottom: 0rpx; 
-  background-color: #2f2d2e; 
+  background-color: whitesmoke; 
   border-top-left-radius: 3%; 
   border-top-right-radius: 3%;
   /* background-color: red; */
@@ -60,7 +60,7 @@ page {
   bottom: 0rpx; 
   width: 100%; 
   height: 100rpx; 
-  background-color: #151515; 
+  background-color: #ffffff; 
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
@@ -160,13 +160,13 @@ page {
    
   .talk-item-nickname { 
   font-size: 28rpx; 
-  color: #aaa8a9; 
+  color: #000000; 
   }
    
    
   .talk-item-time { 
   font-size: 24rpx; 
-  color: #6a6869;
+  color: #000000;
    
   }
    
@@ -179,6 +179,7 @@ page {
   white-space: pre-line; 
   word-break: break-all; 
   word-wrap: break-word；;
+  color: #000000;
    
   }
    
@@ -191,7 +192,7 @@ page {
   padding: 20rpx 0; 
   padding-left: 30rpx; 
   /* box-sizing: border-box; */ 
-  color: white; 
+  color: black; 
   border-top-left-radius: 5%;
   border-top-right-radius: 5%;
    
@@ -199,9 +200,9 @@ page {
    
   
   .fabu-input { 
-  background: red; 
+  background: rgb(0, 0, 0); 
   font-size: 26rpx; 
-  color: #fff;
+  color: rgb(255, 255, 255);
   width: 127rpx; 
   height: 60rpx; 
   line-height: 60rpx;
@@ -210,63 +211,7 @@ page {
   padding: 0;
    
   }
-    
-  .emoji {
-  background-color: #fff;
-  width: 30px; 
-  height: 30px; 
-  text-align: center; 
-  padding-top: 2px;
-  box-sizing: border-box; 
-  font-size: 20px;
-   
-  }
-   
-  .emoji-box {
-  position: absolute; 
-  bottom:-390rpx; 
-  left:0rpx; 
-  height: 200px; 
-  padding: 5px 16rpx; 
-  box-sizing: border-box; 
-  background:#000;
-   
-  } 
-   
-  .emoji-cell { 
-  width: 9.09%; 
-  height: 33px; 
-  display: inline-block;
-   
-  }
-   
-  .emoji-cell image { 
-  width: 23px;
-  height: 23px; 
-  padding: 5px;
-  border-radius: 3px;
-   
-  }
-   
-   
-  .emoji-move-in { 
-  -webkit-animation: emoji-move-in 0.3s forwards; 
-  animation: emoji-move-in 0.3s forwards;
-   
-  }
-   
-  .emoji-move-out { 
-  -webkit-animation: emoji-move-out 0.3s forwards; 
-  animation: emoji-move-out 0.3s forwards;
-   
-  }
-   
-   
-  .no-emoji-move { 
-  -webkit-animation: none; 
-  animation: none;
-  }
-   
+  
    
   @-webkit-keyframes emoji-move-in { 
   0% {

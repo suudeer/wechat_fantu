@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js');
 Page({
   /**
    * 页面的初始数据
@@ -6,7 +7,37 @@ Page({
 
     click: false, //是否显示弹窗内容
     option: false, //显示弹窗或关闭弹窗的操作动画
+   
 
+    talks: [
+      {
+        avatarUrl: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+        nickName: '小红',
+        content:'为什么这么好吃呢?',
+        talkTime: '5分钟前'
+      },
+      {
+        avatarUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3510986481,3852924315&fm=111&gp=0.jpg',
+        nickName: '小天',
+        content:'为什么好吃呢?',
+        talkTime: '10分钟前'
+      },
+      {
+        avatarUrl: 'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1419628337,1603242413&fm=26&gp=0.jpg',
+        nickName: '小花',
+        content:'就这',
+        talkTime: '11分钟前'
+      },
+      {
+        avatarUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3782128483,794367969&fm=26&gp=0.jpg',
+        nickName: '小皮',
+        content:'好',
+        talkTime: '15分钟前'
+      },
+    ],
+    touchStart: 0,
+    inputValue: '',
+    inputBiaoqing: '',
 
 
    video_list:[
@@ -19,6 +50,9 @@ Page({
       img_tex2:"花菜66666",
       'show1': true,
       'show2':true,
+      'zannum':50,
+      'cainum':60,
+      'talknum':4,
      },
     {
       img_src:'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=107076554,4066867601&fm=26&gp=0.jpg',
@@ -29,6 +63,9 @@ Page({
       img_tex2:"花饺66666",
       'show1': true,
       'show2':true,
+      'zannum':50,
+      'cainum':60,
+      'talknum':4,
     },
     {
       img_src:'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1290450967,363723296&fm=26&gp=0.jpg',
@@ -39,6 +76,9 @@ Page({
       img_tex2:"莲藕炒肉66666",
       'show1': true,
       'show2':true,
+      'zannum':50,
+      'cainum':60,
+      'talknum':4,
     },
     {
       img_src:'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2312087456,4020377046&fm=26&gp=0.jpg',
@@ -49,6 +89,9 @@ Page({
       img_tex2:"炒青菜66666",
       'show1': true,
       'show2':true,
+      'zannum':50,
+      'cainum':60,
+      'talknum':4,
     },
    ],
    pageY:'',    // 触摸起始高度坐标
@@ -57,6 +100,88 @@ Page({
    difference:'', // 拖动的距离
    windowHeight:'',// 屏幕高度
   },
+
+
+  onReady: function() {
+    // 评论弹出层动画创建
+    this.animation = wx.createAnimation({
+     duration: 400, // 整个动画过程花费的时间，单位为毫秒
+     timingFunction: "ease", // 动画的类型
+     delay: 0 // 动画延迟参数
+    })
+    },
+    showTalks: function() {
+    // 加载数据
+    this.loadTalks();
+    // 设置动画内容为：使用绝对定位显示区域，高度变为100%
+    this.animation.bottom("0rpx").height("100%").step()
+    this.setData({
+     talksAnimationData: this.animation.export()
+    })
+    },
+    
+    hideTalks: function() {
+    // 设置动画内容为：使用绝对定位隐藏整个区域，高度变为0
+    this.animation.bottom("-100%").height("0rpx").step()
+    this.setData({
+     talksAnimationData: this.animation.export()
+    })
+    },
+    
+    // 加载数据
+    loadTalks: function() {
+    wx.showNavigationBarLoading();
+    let that = this;
+    this.setData({
+     talksAnimationData: that.animation.export()
+    })
+    wx.hideNavigationBarLoading();
+    },
+    
+    onScrollLoad: function() {
+    // 加载新的数据
+   // this.loadTalks();
+    },
+    //下拉评论框隐藏
+    touchStart: function(e) {
+    let touchStart = e.touches[0].clientY;
+    this.setData({
+     touchStart,
+    })
+    },
+    touchMove: function(e) {
+    let touchLength = e.touches[0].clientY - this.data.touchStart;
+    console.log(touchLength - 100)
+    if (touchLength > 100) {
+     this.animation.bottom("-100%").height("0rpx").step()
+     this.setData({
+     talksAnimationData: this.animation.export(),
+     })
+    }
+    },
+    //输入框失去焦点时触发
+    bindInputBlur: function(e) {
+    console.log(e)
+    console.log(this.data.inputBiaoqing)
+    this.data.inputValue = e.detail.value + this.data.inputBiaoqing;
+    },
+    //点击发布，发布评论
+    faBu: function() {
+    let that = this;
+    var time = util.formatTime(new Date());
+    this.data.talks.unshift({
+     avatarUrl: 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2070453827,1163403148&fm=26&gp=0.jpg',
+     nickName: '饭饭',
+     content: this.data.inputValue,
+     talkTime: '刚刚'/*time*/
+    })
+    that.data.inputValue = '';
+    that.setData({
+     talks: that.data.talks,
+     inputValue: that.data.inputValue,
+     talksAnimationData: that.animation.export()
+    })
+    },
 
   zan: function (e) {
     const vm = this;
@@ -70,6 +195,7 @@ Page({
         icon:'none',
         duration:1000
        })
+       _msg[_index]['zannum'] = vm.data.video_list[_index]['zannum']-1;
     }
     else
     {
@@ -78,14 +204,16 @@ Page({
         icon:'none',
         duration:1000
        })
+       _msg[_index]['zannum'] = vm.data.video_list[_index]['zannum']+1;
        if(!vm.data.video_list[_index]['show2'])
        {
         _msg[_index]['show2'] = !vm.data.video_list[_index]['show2'];
+        _msg[_index]['cainum'] = vm.data.video_list[_index]['cainum']-1;
        }
     }
     vm.setData({
-     video_list: _msg
-   
+     video_list: _msg,
+     
     })
    },
    cai: function (e) {
@@ -93,6 +221,7 @@ Page({
     const _index = e.currentTarget.dataset.index; 
     let _msg = [...vm.data.video_list]; // msg的引用 
     _msg[_index]['show2'] = !vm.data.video_list[_index]['show2'];
+   
     if(vm.data.video_list[_index]['show2'])
     {
       wx.showToast({
@@ -100,6 +229,7 @@ Page({
         icon:'none',
         duration:1000
        })
+       _msg[_index]['cainum'] = vm.data.video_list[_index]['cainum']-1;
     }
     else
     {
@@ -108,9 +238,11 @@ Page({
         icon:'none',
         duration:1000
        })
+       _msg[_index]['cainum'] = vm.data.video_list[_index]['cainum']+1;
        if(!vm.data.video_list[_index]['show1'])
        {
         _msg[_index]['show1'] = !vm.data.video_list[_index]['show1'];
+        _msg[_index]['zannum'] = vm.data.video_list[_index]['zannum']-1;
        }
     }
     vm.setData({

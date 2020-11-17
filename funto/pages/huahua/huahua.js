@@ -1,40 +1,36 @@
 var util = require('../../utils/util.js');
 Page({
   data: {
-  talks: [],
-  touchStart: 0,
-  inputValue: '',
-  inputBiaoqing: '',
-  faces: ['https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg'],
-  names: ['贝贝', '晶晶', '欢欢', '妮妮'],
-  isShow: false, //控制emoji表情是否显示 
-  isLoad: false, //解决初试加载时emoji动画执行一次
-  cfBg: false,
+  talks: [
+    {
+      avatarUrl: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+      nickName: '小红',
+      content:'为什么这么好吃呢?',
+      talkTime: '5分钟前'
+    },
+    {
+      avatarUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3510986481,3852924315&fm=111&gp=0.jpg',
+      nickName: '小天',
+      content:'为什么好吃呢?',
+      talkTime: '10分钟前'
+    },
+    {
+      avatarUrl: 'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1419628337,1603242413&fm=26&gp=0.jpg',
+      nickName: '小花',
+      content:'就这',
+      talkTime: '11分钟前'
+    },
+    {
+      avatarUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3782128483,794367969&fm=26&gp=0.jpg',
+      nickName: '小皮',
+      content:'好',
+      talkTime: '15分钟前'
+    },
+  ],
+ 
   },
   
   onLoad: function() {
-  var em = {},
-   that = this,
-   emChar = that.data.emojiChar.split("-");
-  var emojis = []
-  that.data.emoji.forEach(function(v, i) {
-   em = {
-   char: emChar[i],
-   emoji: "0x1f" + v
-   };
-   emojis.push(em)
-  });
-  that.setData({
-   emojis: emojis
-  })
-  },
-  //点击emoji背景遮罩隐藏emoji盒子
-  cemojiCfBg: function() {
-  console.log('womenlai')
-  this.setData({
-   isShow: false,
-   cfBg: false
-  })
   },
   onReady: function() {
   // 评论弹出层动画创建
@@ -58,42 +54,15 @@ Page({
   // 设置动画内容为：使用绝对定位隐藏整个区域，高度变为0
   this.animation.bottom("-100%").height("0rpx").step()
   this.setData({
-   talks: [],
    talksAnimationData: this.animation.export()
   })
   },
   
   // 加载数据
   loadTalks: function() {
-  // 随机产生一些评论
   wx.showNavigationBarLoading();
   let that = this;
-  let talks = [];
-  let faces = ['https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
-  'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
-  'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
-  'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
-
-
-
-];
-  let names = ['佳佳', '晶晶', '欢欢', '妮妮'];
-  let contents = ['为什么这么好吃呢?', '好吃', '不好吃', '就这?'];
-  let talktime = '刚刚';
-  console.log(talktime)
-  talks = talks.concat(that.data.talks);
-  
-  // 随机产生10条评论
-  for (var i = 0; i < 4; i++) {
-   talks.push({
-   avatarUrl: faces[i],
-   nickName: names[i],
-   content: contents[i],
-   talkTime: talktime
-   });
-  }
   this.setData({
-   talks: talks,
    talksAnimationData: that.animation.export()
   })
   wx.hideNavigationBarLoading();
@@ -101,7 +70,7 @@ Page({
   
   onScrollLoad: function() {
   // 加载新的数据
-  this.loadTalks();
+ // this.loadTalks();
   },
   //下拉评论框隐藏
   touchStart: function(e) {
@@ -132,10 +101,10 @@ Page({
   let that = this;
   var time = util.formatTime(new Date());
   this.data.talks.unshift({
-   avatarUrl: this.data.faces[Math.floor(Math.random() * this.data.faces.length)],
-   nickName: this.data.names[Math.floor(Math.random() * this.data.names.length)],
+   avatarUrl: 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2070453827,1163403148&fm=26&gp=0.jpg',
+   nickName: '饭饭',
    content: this.data.inputValue,
-   talkTime: time
+   talkTime: '刚刚'/*time*/
   })
   that.data.inputValue = '';
   that.setData({
