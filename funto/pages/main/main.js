@@ -126,7 +126,7 @@ jmp_go: function() {
     duration:1000
    })
   wx.navigateTo({
-    url: '"../pages/huahua/huahua'
+    url: '../shop/shop'
   })
 },
  

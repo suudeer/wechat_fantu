@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/main/main",
-    "pages/huahua/huahua"
+    "pages/huahua/huahua",
+    "pages/shop/shop"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,5 +39,4 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
-  
 }

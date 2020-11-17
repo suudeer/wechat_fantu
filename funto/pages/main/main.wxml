@@ -7,7 +7,7 @@
   <image class='img1' hidden='{{!item.show1}}' bindtap='zan' data-index='{{index}}' src='../../images/menuicon/xin1.png'></image>
   <image class='img2' hidden='{{item.show2}}' bindtap='cai' data-index='{{index}}' src='../../images/menuicon/cai1.png'></image>
   <image class='img2' hidden='{{!item.show2}}' bindtap='cai' data-index='{{index}}' src='../../images/menuicon/cai.png'></image>
-  <image class="img3" src="../../images/menuicon/go.png" bindtap='jmp_go'></image>
+  <image class="img3" src="../../images/menuicon/go1.png" bindtap='jmp_go'></image>
   <image class="img4" src="../../images/menuicon/discuss.png" catchtap='clickPup'></image>
 <text class="text2">{{item.img_tex1}}</text>
 <text class="text3">{{item.img_tex2}}</text>
@@ -15,7 +15,14 @@
  <!-- 底部弹窗动画的内容 -->
 <view class='pupContent {{click? "showContent": "hideContent"}} {{option? "open": "close"}}' hover-stop-propagation='true'>
   <text class="view2">关闭</text>
-  <text>655656+5+</text>
+  <view>
+       <scroll-view scroll-y="true" style="height: 800px;" >
+        <view style="height: 400px;"> 11</view><view   style="height: 400px;">11</view>
+       </scroll-view>
+       <view class="insu"> <button >底部</button></view>
+ </view>
+
+
 </view>
 <!-- 固定的背景 -->
 <view class='pupContentBG {{click?"showBG":"hideBG"}} {{option?"openBG":"closeBG"}}' catchtap='clickPup'>

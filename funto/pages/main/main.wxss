@@ -69,7 +69,10 @@
   justify-content: center;
   color: rgb(120, 230, 126);
 }
-
+.insu{
+  z-index: 999;
+  position: absolute;
+}
 
 
 .pupContentBG {
@@ -86,7 +89,7 @@
   bottom: 0;
   box-shadow: 0 0 10rpx #333;
   height: 0;
-  z-index: 999;
+  z-index: 99;
 }
  
 /* 设置显示的背景 */

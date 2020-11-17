@@ -1,94 +1,148 @@
-// pages/huahua/huahua.js
+var util = require('../../utils/util.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    msg: [
-     { 'show1': true },
-     { 'show': false },
-     { 'show': false },
-     { 'show': false },
-     { 'show': false },
-     { 'show': false },
-     { 'show': false },
-     { 'show': false },
-    ]
-   },
-   zan: function (e) {
-    const vm = this;
-   
-    const _index = e.currentTarget.dataset.index;
-   
-    let _msg = [...vm.data.msg]; // msg的引用
-   
-    _msg[_index]['show'] = !vm.data.msg[_index]['show'];
-   
-   
-    vm.setData({
-     msg: _msg
-   
-    })
-   
-   },
- 
-
- 
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  talks: [],
+  touchStart: 0,
+  inputValue: '',
+  inputBiaoqing: '',
+  faces: ['https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg'],
+  names: ['贝贝', '晶晶', '欢欢', '妮妮'],
+  isShow: false, //控制emoji表情是否显示 
+  isLoad: false, //解决初试加载时emoji动画执行一次
+  cfBg: false,
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  
+  onLoad: function() {
+  var em = {},
+   that = this,
+   emChar = that.data.emojiChar.split("-");
+  var emojis = []
+  that.data.emoji.forEach(function(v, i) {
+   em = {
+   char: emChar[i],
+   emoji: "0x1f" + v
+   };
+   emojis.push(em)
+  });
+  that.setData({
+   emojis: emojis
+  })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //点击emoji背景遮罩隐藏emoji盒子
+  cemojiCfBg: function() {
+  console.log('womenlai')
+  this.setData({
+   isShow: false,
+   cfBg: false
+  })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onReady: function() {
+  // 评论弹出层动画创建
+  this.animation = wx.createAnimation({
+   duration: 400, // 整个动画过程花费的时间，单位为毫秒
+   timingFunction: "ease", // 动画的类型
+   delay: 0 // 动画延迟参数
+  })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  showTalks: function() {
+  // 加载数据
+  this.loadTalks();
+  // 设置动画内容为：使用绝对定位显示区域，高度变为100%
+  this.animation.bottom("0rpx").height("100%").step()
+  this.setData({
+   talksAnimationData: this.animation.export()
+  })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  
+  hideTalks: function() {
+  // 设置动画内容为：使用绝对定位隐藏整个区域，高度变为0
+  this.animation.bottom("-100%").height("0rpx").step()
+  this.setData({
+   talks: [],
+   talksAnimationData: this.animation.export()
+  })
   },
+  
+  // 加载数据
+  loadTalks: function() {
+  // 随机产生一些评论
+  wx.showNavigationBarLoading();
+  let that = this;
+  let talks = [];
+  let faces = ['https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+  'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+  'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+  'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
-  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+];
+  let names = ['佳佳', '晶晶', '欢欢', '妮妮'];
+  let contents = ['为什么这么好吃呢?', '好吃', '不好吃', '就这?'];
+  let talktime = '刚刚';
+  console.log(talktime)
+  talks = talks.concat(that.data.talks);
+  
+  // 随机产生10条评论
+  for (var i = 0; i < 4; i++) {
+   talks.push({
+   avatarUrl: faces[i],
+   nickName: names[i],
+   content: contents[i],
+   talkTime: talktime
+   });
   }
-})
+  this.setData({
+   talks: talks,
+   talksAnimationData: that.animation.export()
+  })
+  wx.hideNavigationBarLoading();
+  },
+  
+  onScrollLoad: function() {
+  // 加载新的数据
+  this.loadTalks();
+  },
+  //下拉评论框隐藏
+  touchStart: function(e) {
+  let touchStart = e.touches[0].clientY;
+  this.setData({
+   touchStart,
+  })
+  },
+  touchMove: function(e) {
+  let touchLength = e.touches[0].clientY - this.data.touchStart;
+  console.log(touchLength - 100)
+  if (touchLength > 100) {
+   this.animation.bottom("-100%").height("0rpx").step()
+   this.setData({
+   talks: [],
+   talksAnimationData: this.animation.export(),
+   })
+  }
+  },
+  //输入框失去焦点时触发
+  bindInputBlur: function(e) {
+  console.log(e)
+  console.log(this.data.inputBiaoqing)
+  this.data.inputValue = e.detail.value + this.data.inputBiaoqing;
+  },
+  //点击发布，发布评论
+  faBu: function() {
+  let that = this;
+  var time = util.formatTime(new Date());
+  this.data.talks.unshift({
+   avatarUrl: this.data.faces[Math.floor(Math.random() * this.data.faces.length)],
+   nickName: this.data.names[Math.floor(Math.random() * this.data.names.length)],
+   content: this.data.inputValue,
+   talkTime: time
+  })
+  that.data.inputValue = '';
+  that.setData({
+   talks: that.data.talks,
+   inputValue: that.data.inputValue,
+   talksAnimationData: that.animation.export()
+  })
+  
+  }
+ })
