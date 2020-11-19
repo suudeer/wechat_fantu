@@ -7,34 +7,6 @@ Page({
 
     click: false, //是否显示弹窗内容
     option: false, //显示弹窗或关闭弹窗的操作动画
-   
-
-    talks: [
-      {
-        avatarUrl: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
-        nickName: '小红',
-        content:'为什么这么好吃呢?',
-        talkTime: '5分钟前'
-      },
-      {
-        avatarUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3510986481,3852924315&fm=111&gp=0.jpg',
-        nickName: '小天',
-        content:'为什么好吃呢?',
-        talkTime: '10分钟前'
-      },
-      {
-        avatarUrl: 'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1419628337,1603242413&fm=26&gp=0.jpg',
-        nickName: '小花',
-        content:'就这',
-        talkTime: '11分钟前'
-      },
-      {
-        avatarUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3782128483,794367969&fm=26&gp=0.jpg',
-        nickName: '小皮',
-        content:'好',
-        talkTime: '15分钟前'
-      },
-    ],
     touchStart: 0,
     inputValue: '',
     inputBiaoqing: '',
@@ -53,6 +25,32 @@ Page({
       'zannum':50,
       'cainum':60,
       'talknum':4,
+      talks: [
+        {
+          avatarUrl: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+          nickName: '小红',
+          content:'为什么这么好吃呢?',
+          talkTime: '5分钟前'
+        },
+        {
+          avatarUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3510986481,3852924315&fm=111&gp=0.jpg',
+          nickName: '小天',
+          content:'为什么好吃呢?',
+          talkTime: '10分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1419628337,1603242413&fm=26&gp=0.jpg',
+          nickName: '小琴',
+          content:'就这',
+          talkTime: '11分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3782128483,794367969&fm=26&gp=0.jpg',
+          nickName: '小1',
+          content:'好',
+          talkTime: '15分钟前'
+        },
+      ],
      },
     {
       img_src:'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=107076554,4066867601&fm=26&gp=0.jpg',
@@ -66,6 +64,32 @@ Page({
       'zannum':50,
       'cainum':60,
       'talknum':4,
+      talks: [
+        {
+          avatarUrl: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+          nickName: '小红',
+          content:'为什么这么好吃呢?',
+          talkTime: '5分钟前'
+        },
+        {
+          avatarUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3510986481,3852924315&fm=111&gp=0.jpg',
+          nickName: '小天',
+          content:'为什么好吃呢?',
+          talkTime: '10分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1419628337,1603242413&fm=26&gp=0.jpg',
+          nickName: '小琴',
+          content:'就这',
+          talkTime: '11分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3782128483,794367969&fm=26&gp=0.jpg',
+          nickName: '小2',
+          content:'好',
+          talkTime: '15分钟前'
+        },
+      ],
     },
     {
       img_src:'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1290450967,363723296&fm=26&gp=0.jpg',
@@ -79,6 +103,32 @@ Page({
       'zannum':50,
       'cainum':60,
       'talknum':4,
+      talks: [
+        {
+          avatarUrl: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+          nickName: '小红',
+          content:'为什么这么好吃呢?',
+          talkTime: '5分钟前'
+        },
+        {
+          avatarUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3510986481,3852924315&fm=111&gp=0.jpg',
+          nickName: '小天',
+          content:'为什么好吃呢?',
+          talkTime: '10分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1419628337,1603242413&fm=26&gp=0.jpg',
+          nickName: '小琴',
+          content:'就这',
+          talkTime: '11分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3782128483,794367969&fm=26&gp=0.jpg',
+          nickName: '小3',
+          content:'好',
+          talkTime: '15分钟前'
+        },
+      ],
     },
     {
       img_src:'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2312087456,4020377046&fm=26&gp=0.jpg',
@@ -92,6 +142,32 @@ Page({
       'zannum':50,
       'cainum':60,
       'talknum':4,
+      talks: [
+        {
+          avatarUrl: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3474094557,370758738&fm=11&gp=0.jpg',
+          nickName: '小红',
+          content:'为什么这么好吃呢?',
+          talkTime: '5分钟前'
+        },
+        {
+          avatarUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3510986481,3852924315&fm=111&gp=0.jpg',
+          nickName: '小天',
+          content:'为什么好吃呢?',
+          talkTime: '10分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1419628337,1603242413&fm=26&gp=0.jpg',
+          nickName: '小琴',
+          content:'就这',
+          talkTime: '11分钟前'
+        },
+        {
+          avatarUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3782128483,794367969&fm=26&gp=0.jpg',
+          nickName: '小4',
+          content:'好',
+          talkTime: '15分钟前'
+        },
+      ],
     },
    ],
    pageY:'',    // 触摸起始高度坐标
@@ -162,14 +238,76 @@ Page({
     //输入框失去焦点时触发
     bindInputBlur: function(e) {
     console.log(e)
-    console.log(this.data.inputBiaoqing)
-    this.data.inputValue = e.detail.value + this.data.inputBiaoqing;
+    this.data.inputValue = e.detail.value;
     },
     //点击发布，发布评论
-    faBu: function() {
-    let that = this;
-    var time = util.formatTime(new Date());
-    this.data.talks.unshift({
+    faBu: function(e) {
+    const that = this;
+    const _index = e.currentTarget.dataset.index; 
+   
+    
+    let temp=that.data.video_list[0].talks;  
+    temp.unshift({
+     avatarUrl: 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2070453827,1163403148&fm=26&gp=0.jpg',
+     nickName: '饭饭',
+     content: this.data.inputValue,
+     talkTime: '刚刚'/*time*/
+    })
+    wx.showToast({
+      title:'s2s',
+      icon:'none',
+      duration:1000
+     })
+    that.data.inputValue = '';
+    that.setData({
+     talks: temp,
+     inputValue: that.data.inputValue,
+     talksAnimationData: that.animation.export()
+    })
+    },
+
+
+    fbuu: function (e) {
+      const vm = this;
+      const that = this;
+      const _index = e.currentTarget.dataset.index; 
+      let temp=vm.data.video_list[ 0].talks;   
+      wx.showToast({
+        title:'s2s',
+        icon:'none',
+        duration:1000
+       })
+      temp.unshift({
+       avatarUrl: 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2070453827,1163403148&fm=26&gp=0.jpg',
+       nickName: '饭饭',
+       content: this.data.inputValue,
+       talkTime: '刚刚'/*time*/
+      })
+      that.data.inputValue = '';
+      that.setData({
+       talks: temp,
+       inputValue: that.data.inputValue,
+       talksAnimationData: that.animation.export()
+      })
+     },
+
+
+  zan: function (e) {
+    const vm = this;
+    const that = this;
+    const _index = e.currentTarget.dataset.index; 
+    let _msg = [...vm.data.video_list]; // msg的引用 
+    _msg[_index]['show1'] = !vm.data.video_list[_index]['show1'];
+    let temp=vm.data.video_list[_index].talks;  
+
+
+
+    wx.showToast({
+      title:'s2s',
+      icon:'none',
+      duration:1000
+     })
+    temp.unshift({
      avatarUrl: 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2070453827,1163403148&fm=26&gp=0.jpg',
      nickName: '饭饭',
      content: this.data.inputValue,
@@ -177,17 +315,10 @@ Page({
     })
     that.data.inputValue = '';
     that.setData({
-     talks: that.data.talks,
+     talks: temp,
      inputValue: that.data.inputValue,
      talksAnimationData: that.animation.export()
     })
-    },
-
-  zan: function (e) {
-    const vm = this;
-    const _index = e.currentTarget.dataset.index; 
-    let _msg = [...vm.data.video_list]; // msg的引用 
-    _msg[_index]['show1'] = !vm.data.video_list[_index]['show1'];
     if(vm.data.video_list[_index]['show1'])
     {
       wx.showToast({

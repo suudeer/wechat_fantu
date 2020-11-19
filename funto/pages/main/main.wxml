@@ -1,5 +1,5 @@
 <view class="video_box">
- <view bindtouchend="touchEnd" id="myVideo{{index}}" animation="{{animation}}" bindtouchstart="touchStart" bindtouchmove="touchMove" class="video_list" wx:for="{{video_list}}" data-index="{{index}}" wx:key="index" >
+ <view bindtouchend="touchEnd" id="myVideo{{index}}" animation="{{animation}}" bindtouchstart="touchStart" bindtouchmove="touchMove" class="video_list" wx:for="{{video_list}}" data-index="{{index}}" wx:key="*this" >
   
   <image class="image1" src="{{item.img_src}}" ></image>
   <text class="text1">{{item.img_name}}</text>
@@ -13,9 +13,19 @@
   <image class="img4" src="../../images/menuicon/discuss.png" catchtap='showTalks'></image>
 <text class="text2">{{item.img_tex1}}</text>
 <text class="text3">{{item.img_tex2}}</text>
-<text class='talknums'>{{talks.length}}</text>
- </view>
+<text class='talknums'>{{item.talknum}}</text>
+<view class=" talk-footer"> 
+<view class='footer_box'> 
+<!--
+    <view class="emoji iconfont icon-emoji" catchtap="emojiShowHide"></view> 
+-->
 
+<input class='talk-input' type='text' value='{{inputValue}}' bindblur="bindInputBlur" placeholder='有爱评论，说点儿好听的~'></input> 
+<button class='fabu-input' bindtap='fbuu'>发布</button> 
+</view>
+
+
+</view> 
 
 <!-- 整个评论区 --> 
 <view class='talks-layer' animation='{{talksAnimationData}}'>
@@ -28,14 +38,14 @@
 <view class='talks' bindtouchstart='touchStart' bindtouchmove='touchMove'> 
 <!-- 评论头部 --> 
 <view class='talk-header'> 
-<view class='talk-count'>{{talks.length}} 条评论</view> 
+<view class='talk-count'>{{item.talknum}} 条评论</view> 
 <image src='../../images/menuicon/close1.png' class='talk-close' bindtap='hideTalks'></image> 
 </view>
  
  
 <!-- 评论体 --> 
 <scroll-view class='talk-body' scroll-y="true" bindscrolltolower="onScrollLoad"> 
-<view class='talk-item' wx:for="{{talks}}" wx:key="*this"> 
+<view class='talk-item' wx:for="{{item.talks}}" wx:key="*this" > 
 <view class='talk-item-left'>
 <image class='talk-item-face' src='{{item.avatarUrl}}'></image>
 </view>
@@ -53,7 +63,7 @@
 
  
 <!-- 评论底部 --> 
-<view class="cf-bg" catchtap="cemojiCfBg" style="display:{{cfBg ? 'block' : 'none'}}"></view> 
+<view class="cf-bg" catchtap="cemojiCfBg" style="display:none"></view> 
 <view class=" {{isShow ?'footer_boxmovein' : 'talk-footer'}}"> 
 <view class='footer_box'> 
 <!--
@@ -61,7 +71,7 @@
 -->
 
 <input class='talk-input' type='text' value='{{inputValue}}' bindblur="bindInputBlur" placeholder='有爱评论，说点儿好听的~'></input> 
-<button class='fabu-input' bindtap='faBu'>发布</button> 
+<button class='fabu-input' bindtap='fbuu'>发布</button> 
 </view>
  <!--
 <view wx:if='{{isShow}}' class="emoji-box {{isShow ? 'emoji-move-in' : 'emoji-move-out'}} {{isLoad ? 'no-emoji-move' : ''}}"> 
@@ -80,4 +90,7 @@
 </view> 
 </view> 
 </view>
+ </view>
+
+
 </view>
